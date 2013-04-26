@@ -1,0 +1,10 @@
+.settings
+.buildpath
+.classpath
+.project
+application/logs/*
+application/cache/*
+assets/cache/*
+dist/
+tests/
+blog/
