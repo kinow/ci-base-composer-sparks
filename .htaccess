@@ -1,5 +1,5 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond $1 !^(index\.php|favicon.ico|robots\.txt|sitemap\.xml)
-RewriteRule ^(.*)$ /ci-test/index.php/$1 [L]
+RewriteRule ^(.*)$ /ci-base-composer-sparks/index.php/$1 [L]
 </IfModule>

@@ -455,7 +455,10 @@ class Twiggy
 	{
 		// Reset template locations array since we loaded a different theme
 		//$this->_template_locations = array();
-		
+
+		//$this->_template_locations[] =  $this->_themes_base_dir . $theme;
+		array_unshift($this->_template_locations, $this->_themes_base_dir . $theme);
+
 		// Check if HMVC is installed.
 		// NOTE: there may be a simplier way to check it but this seems good enough.
 		if(method_exists($this->CI->router, 'fetch_module'))
@@ -469,12 +472,13 @@ class Twiggy
 
 				foreach($module_locations as $loc => $offset)
 				{
-					$this->_template_locations[] = $loc . $this->_module . '/' . $this->_config['themes_base_dir'] . $theme;
+					$module_theme_dir = $loc . $this->_module . '/' . $this->_config['themes_base_dir'] . $theme;
+					if (is_dir($module_theme_dir)) {
+						$this->_template_locations[] = $module_theme_dir;
+					} 
 				}
 			}
 		}
-
-		$this->_template_locations[] =  $this->_themes_base_dir . $theme;
 
 		// Reset the paths if needed.
 		if(is_object($this->_twig_loader))
