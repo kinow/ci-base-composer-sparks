@@ -185,6 +185,9 @@ class Modules
 				
 				if ($base == 'libraries/' AND is_file($fullpath.ucfirst($file_ext))) 
 					return array($fullpath, ucfirst($file));
+				
+				if ($base == 'models/' AND is_file($fullpath.ucfirst($file_ext)))
+					return array($fullpath, ucfirst($file));
 					
 				if (is_file($fullpath.$file_ext)) return array($fullpath, $file);
 			}
